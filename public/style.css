@@ -1,0 +1,100 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f0f2f5;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 80%;
+  margin: 40px auto;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.chat-box {
+  height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fafafa;
+  margin-bottom: 10px;
+}
+
+.message {
+  margin: 8px 0;
+  padding: 8px 12px;
+  border-radius: 20px;
+  max-width: 80%; /* Batasi lebar gelembung */
+  display: block; /* Buat setiap pesan menjadi blok penuh */
+  clear: both; /* Pastikan setiap pesan memulai baris baru setelah float sebelumnya (jika ada) */
+  word-wrap: break-word; /* Pastikan teks panjang tidak melebihi batas gelembung */
+}
+
+.message.user {
+  background-color: #F8BBD0;
+  margin-left: auto; /* Dorong gelembung ke kanan */
+  margin-right: 0;
+  width: 50%;
+}
+
+.message.bot {
+  background-color: #FFF176;
+  margin-right: auto; /* Dorong gelembung ke kiri */
+  margin-left: 0;
+}
+
+form {
+  display: flex;
+  gap: 10px;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  background-color: #0d6efd;
+  color: white;
+  border-radius: 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0b5ed7;
+}
+
+/* Styling for the "typing" animation dots */
+/* This will be appended to the "Typing" text set in JavaScript. */
+/* The .loading-indicator element itself gets bubble styling from .message and .bot classes. */
+.loading-indicator::after {
+  content: ''; /* Initial content, animation will change this */
+  display: inline-block; /* Allows animation and proper layout */
+  vertical-align: bottom; /* Aligns dots nicely with the "Typing" text */
+  animation: typing-animation 1.2s infinite steps(4, end);
+  /* steps(4, end) creates 4 discrete steps for the content: "", ".", "..", "..." */
+  margin-left: 3px; /* Adds a small space between "Typing" and the dots */
+}
+
+@keyframes typing-animation {
+  0%   { content: ''; }    /* No dots */
+  25%  { content: '.'; }   /* One dot */
+  50%  { content: '..'; }  /* Two dots */
+  75%  { content: '...'; } /* Three dots */
+  100% { content: '...'; } /* Keep three dots for the end of the animation cycle */
+}
